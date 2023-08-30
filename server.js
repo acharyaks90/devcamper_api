@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bootcampsRoutes = require('./routes/bootcamps');
 const logger = require('./middleware/logger');
+const morgan = require('morgan');
 
 
 //Load env vars
@@ -13,6 +14,10 @@ app.listen(PORT, ()=>{
     console.log(`Server runnning in ${process.env.NODE_ENV} mode on port ${PORT}`);
 })
 app.use(logger);
+if(process.env.NODE_ENV == 'development'){
+    app.use(morgan('dev'))
+}
+
 app.use('/api/v1/bootcamps', bootcampsRoutes);
 
 app.get('/', (req, res)=>{
