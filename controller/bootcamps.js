@@ -39,6 +39,11 @@ exports.getBootcamp = async (req, res, next)=>{
     try{ 
         const bootcamp = await Bootcamp.findById(req.params.id);
         //res.status(200).json({'success':true, msg: 'Bootcamp created'});
+        if(!bootcamp){
+           return res.status(400).json({
+                'success':false
+            }); 
+        }
         res.status(200).json({'success':true, data: bootcamp});
         } catch(err) {
             res.status(400).json({
