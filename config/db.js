@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
     const connectDB = async()=>{
-        const conn = await mongoose.connect('mongodb+srv://thakurinfotech:Savan%402080@cluster0.zkjtjdx.mongodb.net/?retryWrites=true&w=majority', {
+        const conn = await mongoose.connect(process.env.MONGOOSE_URI, {
             useUnifiedTopology: true
         }).catch(err=>{
             console.log(err);
