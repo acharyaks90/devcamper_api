@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
         }).catch(err=>{
             console.log(err);
         })
-        console.log(`Mongoose connected: ${conn.connection.host}`);
+        console.log(`Mongoose connected: ${conn.connection.host}`.cyan.underline.bold);
     }
     module.exports = connectDB;
 
