@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bootcampsRoutes = require('./routes/bootcamps');
 const logger = require('./middleware/logger');
+const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const colors = require('colors');
 const connectDB = require('./config/db')
@@ -24,6 +25,7 @@ if(process.env.NODE_ENV == 'development'){
 }
 app.use(express.json());
 app.use('/api/v1/bootcamps', bootcampsRoutes);
+app.use(errorHandler);
 
 app.get('/', (req, res)=>{
     //res.send('Hello');
