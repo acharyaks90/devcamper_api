@@ -1,6 +1,4 @@
 const NodeGeoCoder = require('node-geocoder');
-
-console.log(process.env.MONGOOSE_URI)
 const options = {
     provider: process.env.GEOCODER_PROVIDER || 'mapquest',
     httpAdapter: 'https',
@@ -8,6 +6,5 @@ const options = {
     formatter: null
 }
 
-console.log(options);
 const geocoder = NodeGeoCoder(options);
 module.exports = geocoder;
