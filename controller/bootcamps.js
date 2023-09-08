@@ -17,11 +17,20 @@ exports.getBootcamps = asyncHandler(async (req, res, next)=>{
     //         next(err);
     //     }
     console.log(req.query);
-    let queryStr = JSON.stringify(req.query);
+    let reqQuery = {...req.query};
+    // Field to exclude 
+    const removeFields = ['select'];
+    removeFields.forEach(param => delete reqQuery[param]);
+    let queryStr = JSON.stringify(reqQuery);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match=> `$${match}`);
     //{{URL}}/api/v1/bootcamps?averageCost[gte]=9000 averageCost added in json and then api start working
 
     let query = Bootcamp.find(JSON.parse(queryStr));
+    if(req.query.select) {
+        const fields = req.query.select.split(',').join(' ');
+        query.select(fields);
+    }
+   console.log(query.select);
     const bootcamps = await query;
    
     res.status(200)
