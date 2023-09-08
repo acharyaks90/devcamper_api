@@ -18,7 +18,11 @@ exports.getBootcamps = asyncHandler(async (req, res, next)=>{
     //     }
     console.log(req.query);
     let queryStr = JSON.stringify(req.query);
-    const bootcamps = await Bootcamp.find(req.query);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match=> `$${match}`);
+    //{{URL}}/api/v1/bootcamps?averageCost[gte]=9000 averageCost added in json and then api start working
+
+    let query = Bootcamp.find(JSON.parse(queryStr));
+    const bootcamps = await query;
    
     res.status(200)
         .json({'success':true, data: bootcamps, count: bootcamps.length });
