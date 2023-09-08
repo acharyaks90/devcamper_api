@@ -16,7 +16,9 @@ exports.getBootcamps = asyncHandler(async (req, res, next)=>{
     //         // });
     //         next(err);
     //     }
-    const bootcamps = await Bootcamp.find();
+    console.log(req.query);
+    let queryStr = JSON.stringify(req.query);
+    const bootcamps = await Bootcamp.find(req.query);
    
     res.status(200)
         .json({'success':true, data: bootcamps, count: bootcamps.length });
