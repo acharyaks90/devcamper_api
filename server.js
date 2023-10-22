@@ -33,8 +33,13 @@ app.get('/', (req, res)=>{
     res.json({name:'Krish'});
 });
 
+app.get('/anil', (req, res)=>{
+    //res.send('Hello');
+    res.json({name:'Anilnpm'});
+});
+
 process.on('unhandledRejection', (err, promise)=>{
-    console.log(`Error: ${err.message}`);
-    server.close(()=> process.exit());
+    console.log(`Error: ${err.message}`.red);
+    server.close(()=> process.exit(1));
 })
 

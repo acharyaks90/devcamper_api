@@ -8,5 +8,5 @@ const mongoose = require('mongoose');
         })
         console.log(`Mongoose connected: ${conn.connection.host}`.cyan.underline.bold);
     }
-    module.exports = connectDB;
+module.exports = connectDB;
 
