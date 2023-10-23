@@ -40,4 +40,4 @@ nodemon server.js
 12. Middleware node-geocoder -map quest
 13. GEOCODER_PROVIDER=mapquest and GEOCODER_API_KEY=<Key>
 14. Query - sort pagination , select skip
-15. 
+15. node seeder -d  for deleting and -i for insert
