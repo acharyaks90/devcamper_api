@@ -1,12 +1,13 @@
 const express = require('express');
-const { getBootcamps, createBootcamp, getBootcamp, updaeteBootcamp, deleteBootcamp, getBootcampsInRadius } = require('../controller/bootcamps')
+const { getBootcamps, createBootcamp, getBootcamp, updaeteBootcamp, deleteBootcamp, getBootcampsInRadius } = require('../controller/bootcamps');
+const courseRouter = require('./courses');
 const router = express.Router();
 
 // router.get('/', (req, res)=>{
    
 //     res.status(200).json({'success':true, msg: `Bootcamp deleted ${req.params.id}`});
 // })
-
+router.use('/:bootcampId/courses',courseRouter);
 router.route('/').get(getBootcamps)
                 .post(createBootcamp);
 router.route('/:id').get(getBootcamp)
