@@ -41,3 +41,4 @@ nodemon server.js
 13. GEOCODER_PROVIDER=mapquest and GEOCODER_API_KEY=<Key>
 14. Query - sort pagination , select skip
 15. node seeder -d  for deleting and -i for insert
+16. Complex nesting routing
