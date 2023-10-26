@@ -124,12 +124,13 @@ exports.updaeteBootcamp = asyncHandler(async (req, res, next)=>{
 // @access PRIVATE
 exports.deleteBootcamp = asyncHandler(async (req, res, next)=>{
     
-        const bootcamp = await Bootcamp.findByIdAndRemove(req.params.id);
+        const bootcamp = await Bootcamp.findById(req.params.id);
         if(!bootcamp){
             return res.status(400).json({
                  'success':false
              }); 
          }
+         bootcamp.deleteOne();
         res.status(200).json({'success':true, data: {}});
     })
 
