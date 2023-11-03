@@ -42,3 +42,6 @@ nodemon server.js
 14. Query - sort pagination , select skip
 15. node seeder -d  for deleting and -i for insert
 16. Complex nesting routing
+17. Photo upload using https://www.npmjs.com/package/express-fileupload
+18.https://www.pexels.com/search/trekking/
+19.
