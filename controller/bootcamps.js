@@ -171,6 +171,14 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next)=>{
      if(!req.files){
         return next(new ErrorResponse(`Please upload a file`, 400))
      }
-     console.log(req.files)
+     const file = req.files.file;
+     console.log(file);
+   
+     if(!file.mimetype.startsWith('image')){
+        return next(new ErrorResponse(`Please upload a an image`, 400))
+     }
+     if (file.size > process.env.MAX_FILE_UPLOAD) {
+        return next(new ErrorResponse(`Please upload a an image LESS THAN ${process.env.MAX_FILE_UPLOAD}`, 400))
+     }
     res.status(200).json({'success':true, data: {}});
 })
