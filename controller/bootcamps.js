@@ -186,7 +186,7 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next)=>{
      file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err=>{
         if(err){
             console.error(err);
-            return  next(new ErrorResponse(`Problem with File upload`, 400))
+            return  next(new ErrorResponse(`Problem with File upload`, 500))
         }
         await Bootcamp.findByIdAndUpdate(req.params.id, {photo: file.name});
      });

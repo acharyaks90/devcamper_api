@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const colors = require('colors');
 const fileUpload = require('express-fileupload')
 const connectDB = require('./config/db')
+const path = require('path');
 
 //Load env vars
 dotenv.config({path: './config/config.env'});
@@ -29,6 +30,7 @@ if(process.env.NODE_ENV == 'development'){
 }
 //File Upload
 app.use(fileUpload());
+app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/bootcamps', bootcampsRoutes);
 app.use('/api/v1/courses', coursesRoutes);
 app.use(errorHandler);
