@@ -46,3 +46,5 @@ nodemon server.js
 18. https://www.pexels.com/search/trekking/
 19. Added advance Results 
 20. npm i jsonwebtoken bcryptjs
+21. Added user model and password hashing
+22. Added sign with token
