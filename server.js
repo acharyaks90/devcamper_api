@@ -10,7 +10,7 @@ const colors = require('colors');
 const fileUpload = require('express-fileupload')
 const connectDB = require('./config/db')
 const path = require('path');
-
+const cookieParser = require('cookie-parser');
 //Load env vars
 dotenv.config({path: './config/config.env'});
 
@@ -23,8 +23,10 @@ const PORT = process.env.PORT;
 const server = app.listen(PORT, ()=>{
     console.log(`Server runnning in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 });
+//Body parser
 app.use(express.json());
- 
+// Cookie parser
+app.use(cookieParser())
 app.use(logger);
 if(process.env.NODE_ENV == 'development'){
     app.use(morgan('dev'))
