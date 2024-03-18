@@ -114,22 +114,22 @@ BootcampSchema.pre('save', function(next){
   next();
 })
 
-BootcampSchema.pre('save', async function(next){
-  const loc = await geocoder.geocode(this.address);
-  this.location = { 
-          type: 'Point',
-          coordinates:[loc[0].longitude, loc[0].latitude],
-          formattedAddress: loc[0].formattedAddress,
-          street: loc[0].streetName,
-          city: loc[0].city,
-          state: loc[0].state,
-          zipcode: loc[0].zipcode,
-          country: loc[0].countryCode
-  }
-  // DOnt save address
-  this.address = undefined;
-  next();
-})
+// BootcampSchema.pre('save', async function(next){
+//   const loc = await geocoder.geocode(this.address);
+//   this.location = { 
+//           type: 'Point',
+//           coordinates:[loc[0].longitude, loc[0].latitude],
+//           formattedAddress: loc[0].formattedAddress,
+//           street: loc[0].streetName,
+//           city: loc[0].city,
+//           state: loc[0].state,
+//           zipcode: loc[0].zipcode,
+//           country: loc[0].countryCode
+//   }
+//   // DOnt save address
+//   this.address = undefined;
+//   next();
+// })
 
 // Cascade delete courses when a bootcamp is deleted;
 BootcampSchema.pre('deleteOne',{document: true, query: false}, async function(next){
