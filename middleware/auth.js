@@ -24,6 +24,16 @@ exports.protect = asyncHandler(async (req, res, next) =>{
         req.user = await User.findById(decoded.id);
         next()
     }catch(err){
-
+        return next( new ErrorResponse('You are Not authorise to access route', 401));
     }
 })
+
+//Grant access to specific roles
+exports.authorize = (...roles)=>{
+    return (req, res, next)=>{
+        if(!roles.includes(req.user.role)) {
+            return next( new ErrorResponse(`User role ${req.user.role} Not authorise to access route`, 403));
+        }
+        next();
+    }
+}
