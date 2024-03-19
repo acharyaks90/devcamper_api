@@ -48,3 +48,6 @@ nodemon server.js
 20. npm i jsonwebtoken bcryptjs
 21. Added user model and password hashing
 22. Added sign with token
+23. Protect route with token
+24. Create route to get current user
+25. Setting env variable in postman pm.environment.set("token", pm.response.json().token)
