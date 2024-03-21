@@ -92,6 +92,9 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next)=>{
                  'success':false
              }); 
          }
+         if(bootcamp.user.toString()!== req.user.id && req.user.role !== 'admin'){
+            return next(new ErrorResponse(`User ${req.params.id} is not authorise to update`, 401))
+        }
          bootcamp.deleteOne();
         res.status(200).json({'success':true, data: {}});
     })
@@ -130,6 +133,9 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next)=>{
     if(!bootcamp){
         return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404))
      }
+     if(bootcamp.user.toString()!== req.user.id && req.user.role !== 'admin'){
+        return next(new ErrorResponse(`User ${req.params.id} is not authorise to update`, 401))
+    }
      if(!req.files){
         return next(new ErrorResponse(`Please upload a file`, 400))
      }
