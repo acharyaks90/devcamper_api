@@ -62,16 +62,20 @@ exports.getBootcamp = asyncHandler(async (req, res, next)=>{
 // @access PRIVATE
 exports.updaeteBootcamp = asyncHandler(async (req, res, next)=>{
 
- 
-        const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
+       
+        let bootcamp = await Bootcamp.findById(req.params.id);
         if(!bootcamp){
             return res.status(400).json({
                  'success':false
              }); 
          }
+         if(bootcamp.user.toString()!== req.user.id && req.user.role !== 'admin'){
+            return next(new ErrorResponse(`User ${req.params.id} is not authorise to update`, 401))
+        }
+         bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
         res.status(200).json({'success':true, data: bootcamp});
         
    
