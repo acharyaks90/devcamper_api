@@ -53,7 +53,7 @@ exports.addCourse = asyncHandler(async(req, res, next)=>{
         return next(new ErrorResponse(`No bootcamp with id of ${req.params.bootcampId}`), 404);
     }
     if(bootcamp.user.toString()!== req.user.id && req.user.role !== 'admin'){
-        return next(new ErrorResponse(`User ${req.params.id} is not authorise to ADD COURSE TO BOOTCAMP`, 401))
+        return next(new ErrorResponse(`User ${req.user.id} is not authorise to ADD COURSE TO BOOTCAMP`, 401))
     }
     const course = await Course.create(req.body);
 
@@ -75,7 +75,9 @@ exports.updateCourse = asyncHandler(async(req, res, next)=>{
     if(!course){
         return next(new ErrorResponse(`No course with id of ${req.params.id}`), 404);
     }
-   
+    if(course.user.toString()!== req.user.id && req.user.role !== 'admin'){
+        return next(new ErrorResponse(`User ${req.user.id} is not authorise to update`, 401))
+    }
      course = await Course.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
@@ -96,7 +98,9 @@ exports.deleteCourse = asyncHandler(async(req, res, next)=>{
     if(!course){
         return next(new ErrorResponse(`No course with id of ${req.params.id}`), 404);
     }
-   
+    if(course.user.toString()!== req.user.id && req.user.role !== 'admin'){
+        return next(new ErrorResponse(`User ${req.user.id} is not authorise to update`, 401))
+    }
     await Course.deleteOne();
 
     res.status(200).json({
