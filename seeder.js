@@ -5,8 +5,10 @@ const dotenv = require('dotenv');
 
 dotenv.config({path: './config/config.env'});
 //LOAD MODELS
+const User = require('./models/User')
 const Bootcamp = require('./models/Bootcamp');
-const Course = require('./models/Course')
+const Course = require('./models/Course');
+
 
 mongoose.connect(process.env.MONGOOSE_URI, {
     useUnifiedTopology: true
@@ -15,12 +17,14 @@ mongoose.connect(process.env.MONGOOSE_URI, {
 
  const bootcamps = JSON.parse(fs.readFileSync(`${__dirname}/data/bootcamps.json`, 'utf-8'));
  const courses = JSON.parse(fs.readFileSync(`${__dirname}/data/courses.json`, 'utf-8'));
+ const users = JSON.parse(fs.readFileSync(`${__dirname}/data/users.json`, 'utf-8'));
  // Import into db
 
  const importData = async() =>{
     try{
-           // await Bootcamp.create(bootcamps);
+            await Bootcamp.create(bootcamps);
             await Course.create(courses);
+            await User.create(users);
             console.log('Data imported'.green.inverse);
             process.exit();
     }catch(err){
@@ -34,10 +38,12 @@ mongoose.connect(process.env.MONGOOSE_URI, {
     try{
             await Bootcamp.deleteMany();
             await Course.deleteMany();
+            await User.deleteMany();
             console.log('Data Destroyed'.red.inverse);
             process.exit();
     }catch(err){
         console.error(err);
+        process.exit();
     }
  }
 
