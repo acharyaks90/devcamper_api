@@ -51,3 +51,4 @@ nodemon server.js
 23. Protect route with token
 24. Create route to get current user
 25. Setting env variable in postman pm.environment.set("token", pm.response.json().token)
+26. Reset password with email using https://www.nodemailer.com/
