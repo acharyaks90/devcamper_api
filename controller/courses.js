@@ -101,7 +101,7 @@ exports.deleteCourse = asyncHandler(async(req, res, next)=>{
     if(course.user.toString()!== req.user.id && req.user.role !== 'admin'){
         return next(new ErrorResponse(`User ${req.user.id} is not authorise to update`, 401))
     }
-    await Course.deleteOne();
+    await course.deleteOne();
 
     res.status(200).json({
         success: true,
