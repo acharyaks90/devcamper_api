@@ -4,6 +4,7 @@ const bootcampsRoutes = require('./routes/bootcamps');
 const coursesRoutes = require('./routes/courses');
 const authRoutes = require('./routes/auth');
 const usersRoutes = require('./routes/users');
+const reviewsRoutes = require('./routes/reviews');
 const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
@@ -39,6 +40,7 @@ app.use('/api/v1/bootcamps', bootcampsRoutes);
 app.use('/api/v1/courses', coursesRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', usersRoutes);
+app.use('/api/v1/reviews', reviewsRoutes);
 app.use(errorHandler);
 
 app.get('/', (req, res)=>{
