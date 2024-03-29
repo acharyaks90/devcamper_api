@@ -4,7 +4,7 @@ const Review = require('../models/Review');
 const Bootcamp = require('../models/Bootcamp')
 
 // @desc Get reviews 
-// @route GET /api/v1/courses
+// @route GET /api/v1/reviews
 // route GET /api/v1/bootcamps/:bootcampId/reviews
 
 exports.getReviews = asyncHandler(async (req, res, next)=>{

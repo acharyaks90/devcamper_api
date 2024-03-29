@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { ggetReviewset } = require('../controller/reviews');
+const { getReviews } = require('../controller/reviews');
 const Review = require('../models/Review');
 const advanceResults = require('../middleware/advanceResults');
 
