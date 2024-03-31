@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) =>{
     console.log(err.stack.red);
     // Mongoose bad Object id
     if(err.name === 'CastError'){
-        const message = `Boot camp not found with id of ${err.value}`;
+        const message = `Resource not found with id of ${err.value}`;
         error = new ErrorResponse(message, 404);
     }
     if(err.code === 11000){
