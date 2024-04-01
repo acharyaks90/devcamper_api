@@ -9,7 +9,7 @@ const Bootcamp = require('../models/Bootcamp')
 
 exports.getReviews = asyncHandler(async (req, res, next)=>{
     if(req.params.BootcampId) {
-        const reviews = await Reviews.find({bootcamp:req.params.BootcampId });
+        const reviews = await Review.find({bootcamp:req.params.BootcampId });
         return res.status(200).json({
             success: true,
             count : reviews.length,
@@ -24,8 +24,6 @@ exports.getReviews = asyncHandler(async (req, res, next)=>{
 // @route GET /api/v1/review/:id
 // @access Public
 exports.getReview = asyncHandler(async ( req, res, next)=>{
-  
-    
     const review = await Review.findById(req.params.id).populate({path:'bootcamp', select: 'name description'});;
     if(!review){
         return next(new ErrorResponse(`No review found the id of ${req.params.id}`),404)

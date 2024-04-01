@@ -8,7 +8,7 @@ const router = express.Router({mergeParams: true});
 const { protect, authorize} = require('../middleware/auth');
  
 
-router.route('/').get(advanceResults(Review,'reviews'),getReviews);
+router.route('/').get(advanceResults(Review),getReviews);
 router.route('/:id').get(getReview);
 
 module.exports = router;
