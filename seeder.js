@@ -8,6 +8,7 @@ dotenv.config({path: './config/config.env'});
 const User = require('./models/User')
 const Bootcamp = require('./models/Bootcamp');
 const Course = require('./models/Course');
+const Review = require('./models/Review');
 
 
 mongoose.connect(process.env.MONGOOSE_URI, {
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGOOSE_URI, {
  const bootcamps = JSON.parse(fs.readFileSync(`${__dirname}/data/bootcamps.json`, 'utf-8'));
  const courses = JSON.parse(fs.readFileSync(`${__dirname}/data/courses.json`, 'utf-8'));
  const users = JSON.parse(fs.readFileSync(`${__dirname}/data/users.json`, 'utf-8'));
+ const reviews = JSON.parse(fs.readFileSync(`${__dirname}/data/reviews.json`, 'utf-8'));
  // Import into db
 
  const importData = async() =>{
@@ -25,6 +27,7 @@ mongoose.connect(process.env.MONGOOSE_URI, {
             await Bootcamp.create(bootcamps);
             await Course.create(courses);
             await User.create(users);
+            await Review.create(reviews);
             console.log('Data imported'.green.inverse);
             process.exit();
     }catch(err){
@@ -39,6 +42,7 @@ mongoose.connect(process.env.MONGOOSE_URI, {
             await Bootcamp.deleteMany();
             await Course.deleteMany();
             await User.deleteMany();
+            await Review.deleteMany();
             console.log('Data Destroyed'.red.inverse);
             process.exit();
     }catch(err){
