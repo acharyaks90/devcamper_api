@@ -18,6 +18,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
+const cors = require('cors');
 //Load env vars
 dotenv.config({path: './config/config.env'});
 
@@ -48,11 +49,12 @@ app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
 const limiter = rateLimit({
-    windowMs: 10*60*1000, //10 min
+    windowMs: 10 * 60 * 1000, //10 min
     max: 100
 });
 app.use(limiter);
 app.use(hpp());
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/bootcamps', bootcampsRoutes);
 app.use('/api/v1/courses', coursesRoutes);
