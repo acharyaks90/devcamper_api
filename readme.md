@@ -58,4 +58,5 @@ nodemon server.js
 30. npm install xss-clean --save
 31. npm i express-rate-limit
 32. npm i hpp -http param pollution attacks
+33. npm cors
 
