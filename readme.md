@@ -52,3 +52,6 @@ nodemon server.js
 24. Create route to get current user
 25. Setting env variable in postman pm.environment.set("token", pm.response.json().token)
 26. Reset password with email using https://www.nodemailer.com/
+27. https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb
+28. npm i express-mongo-sanitize
+

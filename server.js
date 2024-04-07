@@ -13,8 +13,10 @@ const fileUpload = require('express-fileupload')
 const connectDB = require('./config/db')
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const mongoSanitize = require('express-mongo-sanitize');
 //Load env vars
 dotenv.config({path: './config/config.env'});
+
 
 //connect to db
 connectDB();
@@ -35,6 +37,8 @@ if(process.env.NODE_ENV == 'development'){
 }
 //File Upload
 app.use(fileUpload());
+// Santize
+app.use(mongoSanitize());
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/bootcamps', bootcampsRoutes);
 app.use('/api/v1/courses', coursesRoutes);
