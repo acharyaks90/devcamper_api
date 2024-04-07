@@ -58,9 +58,9 @@ exports.getBootcamp = asyncHandler(async (req, res, next)=>{
 })
 
 // @desc update bootcamp
-// @route GET /api/v1/bootcamps/:id
+// @route PUT /api/v1/bootcamps/:id
 // @access PRIVATE
-exports.updaeteBootcamp = asyncHandler(async (req, res, next)=>{
+exports.updateBootcamp = asyncHandler(async (req, res, next)=>{
 
        
         let bootcamp = await Bootcamp.findById(req.params.id);
@@ -82,7 +82,7 @@ exports.updaeteBootcamp = asyncHandler(async (req, res, next)=>{
 })
 
 // @desc delete bootcamp
-// @route GET /api/v1/bootcamps/:id
+// @route DELETE /api/v1/bootcamps/:id
 // @access PRIVATE
 exports.deleteBootcamp = asyncHandler(async (req, res, next)=>{
     
