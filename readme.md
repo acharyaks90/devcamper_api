@@ -54,4 +54,6 @@ nodemon server.js
 26. Reset password with email using https://www.nodemailer.com/
 27. https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb
 28. npm i express-mongo-sanitize
+29. npm i helmet
+30. npm install xss-clean --save
 
