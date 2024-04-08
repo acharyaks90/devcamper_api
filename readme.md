@@ -59,4 +59,9 @@ nodemon server.js
 31. npm i express-rate-limit
 32. npm i hpp -http param pollution attacks
 33. npm cors
+34. https://github.com/thedevsaddam/docgen
+35. api document using postman
+36. docgen build -i ....path of postaman export file
+37. docgen build -i dev.postman_collection.json -o index.httml
+38. 
 
