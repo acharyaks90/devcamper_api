@@ -63,5 +63,11 @@ nodemon server.js
 35. api document using postman
 36. docgen build -i ....path of postaman export file
 37. docgen build -i dev.postman_collection.json -o index.httml
-38. 
+38. pm2 install - npm install pm2 -g
+39. https://pm2.keymetrics.io/
+
+sudo ufw enable
+ufw allow https ssh and http
+
+
 
